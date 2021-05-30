@@ -6,8 +6,8 @@ body{
 }
 
 .container{
-    padding: 10px;
-    width: 380px;
+    padding: 15px;
+    width:max-content;
 }
 
 input{
@@ -52,6 +52,11 @@ button{
 button:hover{
     color: rebeccapurple;
     background-color: lightgray;
+}
+
+#tab-btn{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #delete-btn{
