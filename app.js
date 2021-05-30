@@ -16,8 +16,10 @@ if(lsItems){
 
 tabBtn.addEventListener("click", function(){    
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        saveIt.push(tabs[0].url)
-        localStorage.setItem("myLeads", JSON.stringify(saveIt) )
+        let activeTab = tabs[0];
+        let activeTabUrl = activeTab.url();
+        saveIt.push(activeTabUrl);
+        localStorage.setItem('saveIt', JSON.stringify(saveIt));
         renderItems(saveIt);
     })
 })
