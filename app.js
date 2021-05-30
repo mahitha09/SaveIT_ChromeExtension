@@ -13,13 +13,19 @@ if(lsItems){
     renderItems(saveIt);
 }
 
-deleteBtn.addEventListener("click",()=>{
-    localStorage.clear();
-    saveIt = [];
-    renderItems(saveIt);
-});
+//function to render items
+function renderItems(itemsArray){
+    
+    let listItems = [];
+    
+    for(let i=0;i< itemsArray.length;i++){
+        listItems += `<li><a href="${itemsArray[i]}" target="_blank">${itemsArray[i]}</a></li>`;
+    }
+    ulElement.innerHTML = listItems;
+    
+}
 
-//adding event-listeners for inputbtn
+//adding event-listener for inputBtn
 inputBtn.addEventListener("click",()=>{
     saveIt.push(inputElement.value);
     inputElement.value = "";
@@ -31,13 +37,9 @@ inputBtn.addEventListener("click",()=>{
     
 });
 
-function renderItems(itemsArray){
-    
-    let listItems = [];
-    
-    for(let i=0;i< itemsArray.length;i++){
-        listItems += `<li><a href="${itemsArray[i]}" target="_blank">${itemsArray[i]}</a></li>`;
-    }
-    ulElement.innerHTML = listItems;
-    
-}
+//adding event-listener for deleteBtn
+deleteBtn.addEventListener("click",()=>{
+    localStorage.clear();
+    saveIt = [];
+    renderItems(saveIt);
+});
