@@ -18,10 +18,12 @@ if(lsItems){
 //adding event-listener for deleteBtn
 tabBTn.addEventListener('click',function(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        saveIt.push(tabs[0].url);
+        console.log("hii");
+        let tab = tabs[0];
+        saveIt.push(tab.id);
         localStorage.setItem('saveIt',JSON.stringify(saveIt));
         renderItems(saveIt);
-    });
+    })
 });
 
 //function to render items
