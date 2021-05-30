@@ -16,9 +16,9 @@ if(lsItems){
 
 
 //adding event-listener for deleteBtn
-tabBTn.addEventListener('click',()=>{
-    chrome.tabs.getSelected(null, function(tabs){
-        saveIt.push(tabs.url);
+tabBTn.addEventListener('click',function(){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        saveIt.push(tabs[0].url);
         localStorage.setItem('saveIt',JSON.stringify(saveIt));
         renderItems(saveIt);
     });
