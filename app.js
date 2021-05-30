@@ -2,6 +2,7 @@ const inputBtn = document.getElementById("input-btn");
 const inputElement = document.getElementById('input-element');
 const ulElement = document.getElementById('ul-element');
 const deleteBtn = document.getElementById('delete-btn');
+const tabBTn = document.getElementById('tab-btn')
 
 let saveIt = [];
 
@@ -12,6 +13,16 @@ if(lsItems){
     saveIt = lsItems;
     renderItems(saveIt);
 }
+
+
+//adding event-listener for deleteBtn
+tabBTn.addEventListener('click',()=>{
+    chrome.tabs.getSelected(null, function(tabs){
+        saveIt.push(tabs.url);
+        localStorage.setItem('saveIt',JSON.stringify(saveIt));
+        renderItems(saveIt);
+    });
+});
 
 //function to render items
 function renderItems(itemsArray){
