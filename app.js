@@ -10,16 +10,14 @@ const lsItems = JSON.parse(localStorage.getItem("saveIt"));
 
 if(lsItems){
     saveIt = lsItems;
-    renderItems();
+    renderItems(saveIt);
 }
 
 deleteBtn.addEventListener("click",()=>{
     localStorage.clear();
     saveIt = [];
-    renderItems();
+    renderItems(saveIt);
 });
-
-
 
 //adding event-listeners for inputbtn
 inputBtn.addEventListener("click",()=>{
@@ -29,16 +27,16 @@ inputBtn.addEventListener("click",()=>{
     // adding items to Local storage
     localStorage.setItem('saveIt',JSON.stringify(saveIt));
 
-    renderItems();
+    renderItems(saveIt);
     
 });
 
-function renderItems(){
+function renderItems(itemsArray){
     
     let listItems = [];
     
-    for(let i=0;i< saveIt.length;i++){
-        listItems += `<li><a href="${saveIt[i]}" target="_blank">${saveIt[i]}</a></li>`;
+    for(let i=0;i< itemsArray.length;i++){
+        listItems += `<li><a href="${itemsArray[i]}" target="_blank">${itemsArray[i]}</a></li>`;
     }
     ulElement.innerHTML = listItems;
     
